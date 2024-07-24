@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import { API_BASE_URL } from '../config';
+import { ClipLoader } from 'react-spinners';
 
 const ResetPassword = () => {
   const { token } = useParams();
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -17,14 +19,20 @@ const ResetPassword = () => {
       return;
     }
     try {
+      setLoading(true);
       const response = await axios.post(`${API_BASE_URL}/api/users/reset-password`, {
         token,
         newPassword,
       });
       setMessage('Password reset successful! Please log in.');
-      setTimeout(() => navigate('/login'), 3000); 
+      setTimeout(() => {
+        setLoading(false);
+        navigate('/login');
+      }, 3000); 
     } catch (error) {
+      console.error('Error resetting password:', error.response ? error.response.data : error.message);
       setMessage('Error resetting password. Please try again.');
+      setLoading(false);
     }
   };
 
@@ -63,8 +71,9 @@ const ResetPassword = () => {
             <button
               type="submit"
               className="bg-neon-200 hover:bg-neon-100 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+              disabled={loading}
             >
-              Reset Password
+              {loading ? <ClipLoader size={20} color={"#fff"} /> : "Reset Password"}
             </button>
           </div>
         </form>
