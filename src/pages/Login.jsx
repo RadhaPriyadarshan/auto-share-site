@@ -38,6 +38,15 @@ const Login = () => {
     }
   };
 
+  const handleForgotPassword = async () => {
+    try {
+      await axios.post(`${API_BASE_URL}/api/users/forgot-password`, { email });
+      setMessage('Password reset link sent to your email.');
+    } catch (error) {
+      setMessage('Error sending password reset link. Please try again.');
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col justify-center items-center">
       <div className="bg-white p-8 rounded-lg shadow-md w-96">
@@ -103,6 +112,16 @@ const Login = () => {
               {isRegistering ? 'Login' : 'Register here'}
             </button>
           </p>
+          {!isRegistering && (
+            <p className="text-sm text-gray-600 mt-4">
+              <button
+                className="text-blue-500 hover:text-blue-700"
+                onClick={handleForgotPassword}
+              >
+                Forgot Password?
+              </button>
+            </p>
+          )}
           {message && <p className="text-red-500 mt-4">{message}</p>}
         </div>
       </div>

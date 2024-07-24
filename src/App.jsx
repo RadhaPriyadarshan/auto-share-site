@@ -8,6 +8,7 @@ import Booking from "./pages/Booking";
 import { CarProvider } from "./contexts/CarContext";
 import { SearchProvider } from "./contexts/SearchContext";
 import { AuthProvider } from "./contexts/AuthContext";
+import ResetPassword from "./pages/ResetPassword";
 function App() {
   return (
     <AuthProvider>
@@ -20,6 +21,7 @@ function App() {
               <Route path="/booking" element={<Booking />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/reset-password/:token" element={<ResetPassword />} />
             </Routes>
           </Router>
         </SearchProvider>
