@@ -50,7 +50,7 @@ const Login = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col justify-center items-center">
       <div className="bg-white p-8 rounded-lg shadow-md w-96">
-        <h2 className="text-lg font-bold mb-4">{isRegistering ? 'Register' : 'Login'}</h2>
+        <h2 className="text-lg font-bold mb-4 text-center">{isRegistering ? 'Auto share Register' : 'Auto share Login'}</h2>
         <form onSubmit={handleSubmit}>
           {isRegistering && (
             <div className="mb-4">
@@ -96,7 +96,7 @@ const Login = () => {
           <div className="mb-4">
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+              className="bg-neon-200 hover:bg-neon-100 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
             >
               {isRegistering ? 'Register' : 'Login'}
             </button>
@@ -106,7 +106,7 @@ const Login = () => {
           <p className="text-sm text-gray-600">
             {isRegistering ? 'Already have an account?' : 'New user?'}{' '}
             <button
-              className="text-blue-500 hover:text-blue-700"
+              className="text-neon-200 hover:text-neon-100"
               onClick={() => setIsRegistering(!isRegistering)}
             >
               {isRegistering ? 'Login' : 'Register here'}
@@ -115,7 +115,7 @@ const Login = () => {
           {!isRegistering && (
             <p className="text-sm text-gray-600 mt-4">
               <button
-                className="text-blue-500 hover:text-blue-700"
+                className="text-neon-200 hover:text-neon-100"
                 onClick={handleForgotPassword}
               >
                 Forgot Password?
