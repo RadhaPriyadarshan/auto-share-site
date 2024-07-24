@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import AuthContext from '../contexts/AuthContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 
 export default function HomeNav() {
   const navigate = useNavigate();
@@ -25,9 +27,14 @@ export default function HomeNav() {
         <div className="pl-5 pr-5 py-1 bg-slate-100 text-slate-950 rounded-xl hidden md:block hover:scale-105 duration-150 cursor-not-allowed">Become host</div>
         <div className="pl-5 pr-5 self-center hidden md:block hover:scale-105 duration-150 cursor-not-allowed">Company Profile</div>
         {user ? (
-          <div className="pl-5 pr-5 self-center hover:scale-105 duration-150 cursor-pointer" onClick={profileNavigate}>Profile</div>
+          <div className="flex items-center pl-5 pr-5 self-center hover:scale-105 duration-150 cursor-pointer" onClick={profileNavigate}>
+            <FontAwesomeIcon icon={faUserCircle} className="w-6 h-6 mr-2" />
+            {user.username}
+          </div>
         ) : (
-          <div className="pl-5 pr-5 self-center hover:scale-105 duration-150 cursor-pointer" onClick={loginNavigate}>Login / Sign up</div>
+          <div className="pl-5 pr-5 self-center hover:scale-105 duration-150 cursor-pointer" onClick={loginNavigate}>
+            Login / Sign up
+          </div>
         )}
       </div>
     </div>
