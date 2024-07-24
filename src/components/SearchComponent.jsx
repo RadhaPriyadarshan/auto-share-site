@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { CarContext } from '../contexts/CarContext';
 import { SearchContext } from '../contexts/SearchContext';
+import { API_BASE_URL } from '../config';
 
 const SearchComponent = ({ isHome, isBooking }) => {
   const { setCars } = useContext(CarContext);
@@ -100,7 +101,7 @@ const SearchComponent = ({ isHome, isBooking }) => {
         const formattedEndDate = formatDateTime(searchCriteria.endDate, `${searchCriteria.endTime}:00`);
 
         const response = await fetch(
-          `http://localhost:3000/api/cars/available?startDate=${formattedStartDate}&endDate=${formattedEndDate}&location=${encodeURIComponent(searchCriteria.location)}`
+          `${API_BASE_URL}/api/cars/available?startDate=${formattedStartDate}&endDate=${formattedEndDate}&location=${encodeURIComponent(searchCriteria.location)}`
         );
 
         if (!response.ok) {

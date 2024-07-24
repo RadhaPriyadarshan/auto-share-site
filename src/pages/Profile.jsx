@@ -1,7 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import AuthContext from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from '../config';
 
 const Profile = () => {
   const { user, logout } = useContext(AuthContext);
@@ -13,7 +14,7 @@ const Profile = () => {
     const fetchBookedCars = async () => {
       try {
         console.log(`Fetching booked cars for user ID: ${user._id}`);
-        const response = await axios.get(`http://localhost:3000/api/users/${user._id}/booked-cars`);
+        const response = await axios.get(`${API_BASE_URL}/api/users/${user._id}/booked-cars`);
         setBookedCars(response.data);
       } catch (error) {
         console.error('Error fetching booked cars:', error);
@@ -27,9 +28,9 @@ const Profile = () => {
 
   const handleCancelBooking = async (carId) => {
     try {
-      await axios.delete(`http://localhost:3000/api/users/${user._id}/booked-cars/${carId}`);
+      await axios.delete(`${API_BASE_URL}/api/users/${user._id}/booked-cars/${carId}`);
 
-      await axios.patch(`http://localhost:3000/api/cars/${carId}`, {
+      await axios.patch(`${API_BASE_URL}/api/cars/${carId}`, {
         bookingStartDateTime: null,
         bookingEndDateTime: null
       });
@@ -42,7 +43,7 @@ const Profile = () => {
 
   const handleAddReview = async (carId, review, rating) => {
     try {
-      await axios.post(`http://localhost:3000/api/users/${carId}/reviews`, {
+      await axios.post(`${API_BASE_URL}/api/users/${carId}/reviews`, {
         user: user.username,
         review,
         rating
@@ -63,7 +64,10 @@ const Profile = () => {
       <div className="flex justify-between items-center bg-black p-4 shadow-md">
         <button className="text-neon-100 hover:underline" onClick={() => navigate(-1)}>Back</button>
         <h2 className="text-2xl text-white font-semibold">My Bookings</h2>
-        <button className="text-red-500 hover:underline" onClick={handleLogout}>Sign Out</button>
+        <div className="flex space-x-11">
+          <button className="text-neon-100 hover:underline" onClick={() => navigate('/')}>Home</button>
+          <button className="text-red-500 hover:underline" onClick={handleLogout}>Sign Out</button>
+        </div>
       </div>
       <div className="p-4">
         {bookedCars.length === 0 ? (

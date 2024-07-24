@@ -1,6 +1,6 @@
 import HomeNav from "../components/HomeNav";
 import SearchComponent from "../components/SearchComponent";
-import StickyBar1 from "../components/StickBar1";
+import StickyBar from "../components/StickBar";
 import Testimonial from "../components/Testimonial";
 import HomeFooter from "../components/HomeFooter";
 
@@ -10,7 +10,7 @@ export default function Home() {
     <>
       <div className="">
         <HomeNav />
-        <StickyBar1 />
+        <StickyBar />
           <div className="banner flex flex-col">
             <div className="py-4 mt-24 mb-5">
               <h1 className="text-pretty text-2xl md:text-4xl text-center text-white">

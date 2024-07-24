@@ -4,7 +4,7 @@ import Filter from "../components/Filter";
 import CarCards from "../components/CarCards";
 import { useLocation } from 'react-router-dom';
 import { CarContext } from "../contexts/CarContext";
-
+import { API_BASE_URL } from '../config';
 export default function Menu() {
   
   const { cars,setCars } = useContext(CarContext);
@@ -21,7 +21,7 @@ export default function Menu() {
       if (startDate && endDate && locationParam) {
         try {
           const response = await fetch(
-            `http://localhost:3000/api/cars/available?startDate=${startDate}&endDate=${endDate}&location=${encodeURIComponent(locationParam)}`
+            `${API_BASE_URL}/api/cars/available?startDate=${startDate}&endDate=${endDate}&location=${encodeURIComponent(locationParam)}`
           );
 
           if (!response.ok) {

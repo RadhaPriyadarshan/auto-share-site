@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import AuthContext from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from '../config';
 
 const Login = () => {
   const { login } = useContext(AuthContext);
@@ -16,7 +17,7 @@ const Login = () => {
     e.preventDefault();
     try {
       if (isRegistering) {
-        const response = await axios.post('http://localhost:3000/api/users', {
+        const response = await axios.post(`${API_BASE_URL}/api/users`, {
           username,
           email,
           password,
@@ -24,13 +25,13 @@ const Login = () => {
         setMessage('Registration successful! Please log in.');
         setIsRegistering(false);
       } else {
-        const response = await axios.post('http://localhost:3000/api/users/login', {
+        const response = await axios.post(`${API_BASE_URL}/api/users/login`, {
           email,
           password,
         });
         login(response.data.user);
         setMessage('Login successful!');
-        navigate('/profile');
+        navigate('/');
       }
     } catch (error) {
       setMessage('There was an error. Please check your details and try again.');

@@ -7,6 +7,7 @@ import HomeNav from "../components/HomeNav";
 import SearchComponent from "../components/SearchComponent";
 import { SearchContext } from "../contexts/SearchContext";
 import AuthContext from "../contexts/AuthContext";
+import { API_BASE_URL } from '../config';
 
 const OutlinedDiv = ({ label, value }) => {
   return (
@@ -270,7 +271,7 @@ export default function Booking() {
     }
 
     try {
-      const response = await axios.post(`http://localhost:3000/api/users/${user._id}/booked-cars`, {
+      const response = await axios.post(`${API_BASE_URL}/api/users/${user._id}/booked-cars`, {
         carId: car._id,
         startDate: searchCriteria.startDate,
         endDate: searchCriteria.endDate
