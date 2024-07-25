@@ -1,14 +1,6 @@
-
-
-### Auto Share Site (Frontend)
-
-#### Repository: [Auto Share Site](https://github.com/RadhaPriyadarshan/auto-share-site)
-
----
-
 ## Auto Share Site
 
-A responsive React application for car booking and sharing services.
+A responsive React application for rental car booking and sharing services.
 
 ### Features
 
