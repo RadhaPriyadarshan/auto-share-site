@@ -78,6 +78,10 @@ yarn start
 
 ### License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is 
+
+https://github.com/user-attachments/assets/dd6ac1c3-7860-4cbd-bd4b-41f1eb863797
+
+licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 
