@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/63db7a54-6ff4-4762-81e8-262c8e6c36fd)
+https://github.com/user-attachments/assets/dd6ac1c3-7860-4cbd-bd4b-41f1eb863797
 
 ## Auto Share Site (Zoomcar Clone)
 
@@ -79,8 +79,6 @@ yarn start
 ### License
 
 This project is 
-
-https://github.com/user-attachments/assets/dd6ac1c3-7860-4cbd-bd4b-41f1eb863797
 
 licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
